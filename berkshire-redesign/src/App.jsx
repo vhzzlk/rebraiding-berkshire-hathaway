@@ -47,33 +47,34 @@ function App() {
     }
     rafId = requestAnimationFrame(raf);
 
-    // Intercept internal anchor clicks and delegate scrolling to Lenis
-    const handleAnchorClick = e => {
-      const target = e.currentTarget;
-      const href = target.getAttribute('href');
-      if (href && href.startsWith('#') && href !== '#') {
-        const element = document.querySelector(href);
-        if (element) {
-          e.preventDefault();
-          // Small delay lets the mobile menu close before scrolling
-          setTimeout(() => {
-            lenis.scrollTo(element, { offset: NAVBAR_OFFSET, duration: 1.5 });
-          }, 100);
+    // Use event delegation to catch clicks on ANY anchor link, even dynamically 
+    // mounted ones like the Mobile Menu hamburger dropdown links.
+    const handleGlobalClick = e => {
+      const anchor = e.target.closest('a[href^="#"]');
+      if (anchor) {
+        const href = anchor.getAttribute('href');
+        if (href && href !== '#') {
+          const element = document.querySelector(href);
+          if (element) {
+            e.preventDefault();
+            // Small delay lets the mobile menu close before scrolling
+            setTimeout(() => {
+              // Different offsets can be easily configured here if needed later, 
+              // but 80 works perfectly for clearing the overlap on both desktop and mobile.
+              const isMobile = window.innerWidth <= 768;
+              const mobileOffset = isMobile ? 90 : NAVBAR_OFFSET; 
+              lenis.scrollTo(element, { offset: mobileOffset, duration: 1.5 });
+            }, 100);
+          }
         }
       }
     };
 
-    // Wait for React to render all links before attaching listeners
-    const listenerTimer = setTimeout(() => {
-      const anchors = document.querySelectorAll('a[href^="#"]');
-      anchors.forEach(anchor => anchor.addEventListener('click', handleAnchorClick));
-    }, 500);
+    document.addEventListener('click', handleGlobalClick);
 
     return () => {
       cancelAnimationFrame(rafId);
-      clearTimeout(listenerTimer);
-      const anchors = document.querySelectorAll('a[href^="#"]');
-      anchors.forEach(anchor => anchor.removeEventListener('click', handleAnchorClick));
+      document.removeEventListener('click', handleGlobalClick);
       lenis.destroy();
     };
   }, []);
