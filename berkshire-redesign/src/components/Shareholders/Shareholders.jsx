@@ -55,7 +55,7 @@ const LinkItem = styled(motion.a)`
   padding: 2rem 0;
   border-bottom: 1px solid #eaeaea;
   color: var(--text-color);
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
   position: relative;
 
   &:hover {
@@ -95,7 +95,7 @@ export default function Shareholders() {
         <LinksContainer>
           {links.map((link, idx) => (
             <LinkItem
-              key={idx}
+              key={link}
               href="#!"
               onClick={e => e.preventDefault()}
               initial={{ opacity: 0, y: 30 }}

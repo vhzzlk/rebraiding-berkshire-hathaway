@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Section = styled.section`
   padding: 10rem 2rem; 
@@ -56,10 +56,8 @@ const Highlight = styled.span`
 `;
 
 export default function About() {
-  const containerRef = useRef(null);
-  
   return (
-    <Section id="about" ref={containerRef}>
+    <Section id="about">
       <Container>
         <HeadingWrapper>
           <Heading

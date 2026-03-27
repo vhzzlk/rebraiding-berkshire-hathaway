@@ -82,9 +82,9 @@ export default function Footer() {
           </Logo>
           <Links>
             {['Terms of Use', 'Privacy Policy', 'Contact', 'SEC Filings'].map(
-              (text, idx) => (
+              (text) => (
                 <FooterLink
-                  key={idx}
+                  key={text}
                   href="#!"
                   onClick={e => e.preventDefault()}
                   whileHover={{

@@ -48,14 +48,32 @@ const Subtitle = styled(motion.p)`
 
 const ImageContainer = styled(motion.div)`
   position: absolute;
-  width: 300px;
-  height: 400px;
+  width: clamp(200px, 25vw, 300px);
+  height: clamp(280px, 35vw, 400px);
   border-radius: 8px;
   overflow: hidden;
   z-index: -1;
   pointer-events: none;
   filter: grayscale(100%);
   opacity: 0.2;
+`;
+
+const ImgLeft = styled(ImageContainer)`
+  left: 10%;
+  @media (max-width: 1024px) { left: 5%; }
+  @media (max-width: 768px) { 
+    left: -15%; 
+    opacity: 0.1; 
+  }
+`;
+
+const ImgRight = styled(ImageContainer)`
+  right: 10%;
+  @media (max-width: 1024px) { right: 5%; }
+  @media (max-width: 768px) { 
+    right: -15%; 
+    opacity: 0.1; 
+  }
 `;
 
 export default function Hero() {
@@ -65,19 +83,23 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
 
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const titleY   = useTransform(scrollYProgress, [0, 1],   [0, 300]);
+  const opacity  = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale    = useTransform(scrollYProgress, [0, 1],   [1, 1.2]);
+
+  // Parallax for the two background images
+  const imgLeftY  = useTransform(scrollYProgress, [0, 1], [0,  200]);
+  const imgRightY = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
     <HeroWrapper ref={ref} id="hero">
       <StickyContainer>
-        <ImageContainer style={{ y: useTransform(scrollYProgress, [0,1], [0, 200]), x: -300, rotate: -5 }} >
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Architecture" style={{width: '100%', height:'100%', objectFit: 'cover'}}/>
-        </ImageContainer>
-        <ImageContainer style={{ y: useTransform(scrollYProgress, [0,1], [0, -100]), x: 300, rotate: 5 }} >
-            <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=1974&auto=format&fit=crop" alt="Finance" style={{width: '100%', height:'100%', objectFit: 'cover'}}/>
-        </ImageContainer>
+        <ImgLeft style={{ y: imgLeftY, rotate: -5 }} >
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="" role="presentation" loading="lazy" decoding="async" style={{width: '100%', height:'100%', objectFit: 'cover'}}/>
+        </ImgLeft>
+        <ImgRight style={{ y: imgRightY, rotate: 5 }} >
+            <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=1974&auto=format&fit=crop" alt="" role="presentation" loading="lazy" decoding="async" style={{width: '100%', height:'100%', objectFit: 'cover'}}/>
+        </ImgRight>
 
         <TitleContainer style={{ y: titleY, opacity, scale }}>
           <Title
@@ -99,3 +121,4 @@ export default function Hero() {
     </HeroWrapper>
   );
 }
+

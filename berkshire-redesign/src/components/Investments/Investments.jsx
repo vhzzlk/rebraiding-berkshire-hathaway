@@ -55,6 +55,7 @@ const CardNumber = styled.div`
 `;
 
 const CardTitle = styled.h3`
+  font-family: var(--font-sans);
   font-size: 2rem;
   color: var(--text-color);
   margin-bottom: 1rem;
@@ -63,6 +64,7 @@ const CardTitle = styled.h3`
 `;
 
 const CardDescription = styled.p`
+  font-family: var(--font-sans);
   color: var(--muted-text);
   font-size: 1.1rem;
   line-height: 1.5;
@@ -103,7 +105,7 @@ export default function Investments() {
         <Grid>
           {portfolio.map((item, idx) => (
             <Card
-              key={idx}
+              key={item.num}
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{

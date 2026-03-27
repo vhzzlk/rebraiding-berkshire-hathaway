@@ -3,60 +3,60 @@
 ```
 berkshire-redesign/
 │
-├── 📄 index.html                    # HTML principal com imports de fonts
-├── 📄 vite.config.js               # Configuração do Vite
-├── 📄 package.json                 # Dependências e scripts
-├── 📄 .gitignore                   # Arquivos ignorados no Git
+├── 📄 index.html                     # HTML principal, meta tags, import das fontes
+├── 📄 vite.config.js                 # Configuração do Vite (plugin React)
+├── 📄 package.json                   # Dependências, scripts e metadados
+├── 📄 eslint.config.js               # Regras do ESLint (React + Hooks)
+├── 📄 .gitignore                     # Arquivos ignorados pelo Git
 │
-├── 📚 Documentação
-│   ├── README.md                   # Documentação completa
-│   ├── QUICKSTART.md               # Guia rápido (3 passos)
-│   ├── CUSTOMIZATION.md            # Como customizar cores, fontes, conteúdo
-│   ├── DEPLOYMENT.md               # Deploy para produção
-│   └── PROJECT-STRUCTURE.md        # Este arquivo
+├── 📚 Documentação (raiz do repo)
+│   ├── README.md                     # Visão geral completa
+│   ├── QUICKSTART.md                 # Guia rápido (3 passos)
+│   ├── CUSTOMIZATION.md              # Como customizar cores, fontes e conteúdo
+│   ├── DEPLOYMENT.md                 # Deploy para produção
+│   └── PROJECT-STRUCTURE.md          # Este arquivo
 │
-├── src/
-│   ├── main.jsx                    # Entry point React
-│   ├── App.jsx                     # Componente raiz (estrutura principal)
-│   ├── App.css                     # Estilos do App (background gradiente)
-│   ├── index.css                   # Estilos GLOBAIS (cores, fontes, animações)
-│   │
-│   └── components/
-│       ├── Navbar/
-│       │   ├── Navbar.jsx          # Menu responsivo com logo
-│       │   └── Navbar.css
-│       │
-│       ├── Hero/
-│       │   ├── Hero.jsx            # Seção principal com gráfico e stats
-│       │   └── Hero.css
-│       │
-│       ├── About/
-│       │   ├── About.jsx           # Sobre a empresa + 4 features
-│       │   └── About.css
-│       │
-│       ├── Investments/
-│       │   ├── Investments.jsx     # Portfolio com gráfico em pizza
-│       │   └── Investments.css
-│       │
-│       ├── Shareholders/
-│       │   ├── Shareholders.jsx    # 4 Cards + CTA para acionistas
-│       │   └── Shareholders.css
-│       │
-│       ├── Reports/
-│       │   ├── Reports.jsx         # Filtro por ano + lista de PDFs
-│       │   └── Reports.css
-│       │
-│       ├── Footer/
-│       │   ├── Footer.jsx          # Rodapé com links e redes sociais
-│       │   └── Footer.css
-│       │
-│       └── Example/                # Exemplo de novo componente (referência)
-│           ├── Example.jsx
-│           └── Example.css
-│
-└── 📦 node_modules/                # Dependências (criado após npm install)
-    └── ... (não editar)
+└── src/
+    ├── main.jsx                      # Entry point — monta o React no DOM
+    ├── App.jsx                       # Componente raiz — orquestra todas as seções
+    ├── index.css                     # Estilos globais: variáveis, reset, animações
+    │
+    └── components/
+        │
+        ├── Navbar/
+        │   ├── Navbar.jsx            # Menu responsivo com logo e toggle mobile
+        │   └── Navbar.css            # Estilos do Navbar + blur no scroll
+        │
+        ├── Hero/
+        │   ├── Hero.jsx              # Seção principal: título, gráfico, stats, CTAs
+        │   └── Hero.css              # Estilos do Hero + scroll indicator
+        │
+        ├── About/
+        │   ├── About.jsx             # Texto da empresa + 4 feature cards
+        │   └── About.css             # Estilos do About + hover effects
+        │
+        ├── Investments/
+        │   ├── Investments.jsx       # Portfolio: gráfico em pizza + barras de progresso
+        │   └── Investments.css       # Estilos + animação shimmer
+        │
+        ├── Shareholders/
+        │   ├── Shareholders.jsx      # 4 resource cards + CTA para acionistas
+        │   └── Shareholders.css      # Estilos dos cards + gradients
+        │
+        ├── Reports/
+        │   ├── Reports.jsx           # Filtro por ano + lista de PDFs
+        │   └── Reports.css           # Estilos dos itens de relatório
+        │
+        ├── Footer/
+        │   ├── Footer.jsx            # Rodapé: 4 colunas, socials, copyright
+        │   └── Footer.css            # Estilos do Footer
+        │
+        └── Example/                  # ← Template de referência para novos componentes
+            ├── Example.jsx
+            └── Example.css
 ```
+
+> **node_modules/** é criado automaticamente após `npm install` — não editar.
 
 ---
 
@@ -64,220 +64,246 @@ berkshire-redesign/
 
 | Aspecto | Detalhes |
 |---------|----------|
-| **Componentes** | 7 principais + 1 exemplo |
-| **Linhas de Código** | ~1000+ linhas (React + CSS) |
-| **Animações** | 8 animações CSS principais |
-| **Responsividade** | Mobile-first (tested em 320px - 1920px) |
-| **Dependências** | React, Vite, Lucide Icons |
-| **Performance** | ~95+ Lighthouse score |
-| **Acessibilidade** | WAI-ARIA compliant |
-| **SEO Ready** | Meta tags, Open Graph, schema.org |
+| **Componentes** | 7 principais + 1 template (Example) |
+| **Linhas de Código** | ~1.500+ (JSX + CSS) |
+| **Animações CSS** | 7 `@keyframes` principais |
+| **Animações Framer Motion** | Transições declarativas nos componentes |
+| **Responsividade** | Mobile-first (320px → 1920px) |
+| **Dependências principais** | React 19, Vite 8, Framer Motion, Lenis |
+| **Ícones** | Lucide React (26+ ícones) |
+| **Meta Lighthouse** | Performance > 90 |
+| **Acessibilidade** | WAI-ARIA attributes nos interativos |
+| **SEO** | Meta tags, Open Graph, `lang="pt-BR"` |
 
 ---
 
 ## 🎯 Guia de Arquivos por Tarefa
 
-### Mudar Cores?
-→ `src/index.css` (linhas 5-13)
-
-### Mudar Tipografia?
-→ `index.html` (fonts) + `src/index.css` (variáveis)
-
-### Editar Conteúdo?
-→ Arquivo JSX correspondente:
-- Navbar → `src/components/Navbar.jsx`
-- Hero → `src/components/Hero.jsx`
-- etc.
-
-### Adicionar Nova Seção?
-1. Copie `src/components/Example.jsx/css`
-2. Renomeie e edite
-3. Importe em `src/App.jsx`
-4. Adicione ao JSX
-
-### Mudar Espaçamento/Tamanhos?
-→ Arquivo CSS da seção (`.css`)
-
-### Editar Animações?
-→ `src/index.css` (@keyframes) ou arquivo CSS específico
-
-### Deploy?
-→ Leia `DEPLOYMENT.md`
+| Tarefa | Arquivo(s) |
+|--------|-----------|
+| Mudar cores | `src/index.css` → seção `:root` |
+| Mudar tipografia | `index.html` (link Google Fonts) + `src/index.css` (variáveis) |
+| Editar navbar | `src/components/Navbar/Navbar.jsx` |
+| Editar hero | `src/components/Hero/Hero.jsx` |
+| Editar about | `src/components/About/About.jsx` |
+| Editar investments | `src/components/Investments/Investments.jsx` |
+| Editar shareholders | `src/components/Shareholders/Shareholders.jsx` |
+| Editar reports | `src/components/Reports/Reports.jsx` |
+| Editar footer | `src/components/Footer/Footer.jsx` |
+| Mudar animações CSS | `src/index.css` → seção `@keyframes` |
+| Mudar animações Framer | Arquivo JSX do componente correspondente |
+| Mudar espaçamentos | CSS do componente correspondente |
+| Mudar breakpoints | CSS do componente correspondente |
+| Adicionar nova seção | Copie `Example/`, renomeie, importe em `App.jsx` |
+| Deploy | Leia `DEPLOYMENT.md` |
 
 ---
 
 ## 🔄 Fluxo de Componentes
 
 ```
-App.jsx (Root)
-  ├── Navbar
-  ├── Hero
-  ├── About
-  ├── Investments
-  ├── Shareholders
-  ├── Reports
-  └── Footer
+main.jsx
+  └── App.jsx (Root)
+        ├── <Navbar />
+        ├── <Hero />
+        ├── <About />
+        ├── <Investments />
+        ├── <Shareholders />
+        ├── <Reports />
+        └── <Footer />
 ```
 
-Cada componente é **independente** e pode ser modificado ou removido sem afetar os outros.
+Cada componente é **autônomo**: tem seu próprio JSX + CSS e pode ser modificado ou removido sem impactar os demais.
 
 ---
 
 ## 📝 Convenções de Código
 
 ### Nomenclatura
-- **Componentes**: PascalCase (`Navbar.jsx`)
-- **Arquivos CSS**: kebab-case (`navbar.css`)
-- **Classes CSS**: lowercase com dashes (`.navbar-logo`)
-- **Variáveis**: camelCase (`navItems`, `isOpen`)
-- **IDs de seção**: lowercase (`id="about"`, `id="investments"`)
 
-### Organização CSS
-1. Layout (display, grid, flex)
-2. Dimensões (width, height, padding)
-3. Cores (background, color)
-4. Tipografia (font, text-align)
-5. Efeitos (shadow, border, animation)
-6. Media queries (último)
+| Elemento | Padrão | Exemplo |
+|----------|--------|---------|
+| Componentes React | PascalCase | `Navbar.jsx` |
+| Arquivos CSS | PascalCase (mesmo do componente) | `Navbar.css` |
+| Classes CSS | lowercase + dashes | `.navbar-logo` |
+| Variáveis JS | camelCase | `navItems`, `isOpen` |
+| IDs de seção HTML | lowercase | `id="about"` |
+| Props | camelCase | `isScrolled`, `onClose` |
+
+### Organização CSS (por arquivo de componente)
+
+```css
+/* 1. Layout       */ display / grid / flex / position
+/* 2. Dimensões    */ width / height / padding / margin
+/* 3. Cores        */ background / color / border
+/* 4. Tipografia   */ font / text-align / line-height
+/* 5. Efeitos      */ box-shadow / opacity / transform / animation
+/* 6. Media Queries*/ @media (max-width: ...) — sempre por último
+```
 
 ---
 
 ## 🎨 Sistema de Design
 
-### Cores Principais
-```
---black: #0a0e27       (Background 1)
---dark: #1a1f3a        (Background 2)
---gold: #d4af37        (Primary CTA)
---gold-light: #e8c547  (Hover states)
---white: #ffffff       (Text principal)
---accent: #00d9ff      (Acentos / secundário)
-```
+### Paleta Completa
+
+| Variável | Hex | Uso |
+|----------|-----|-----|
+| `--black` | `#0a0e27` | Background principal |
+| `--dark` | `#1a1f3a` | Backgrounds secundários |
+| `--gold` | `#d4af37` | Cor primária / CTAs |
+| `--gold-light` | `#e8c547` | Hover states / destaques |
+| `--white` | `#ffffff` | Texto principal |
+| `--gray-light` | `#f5f5f5` | Backgrounds leves |
+| `--gray-dark` | `#2a2f4a` | Borders e elementos |
+| `--accent` | `#00d9ff` | Cyan — acentos secundários |
 
 ### Tipografia
-```
-Display: Playfair Display (H1, H2, H3)
-Body: Inter (p, span, label)
-```
+
+| Papel | Família | Pesos |
+|-------|---------|-------|
+| Display (H1–H3) | Playfair Display, serif | 400 · 600 · 700 |
+| Body (p, span…) | Inter, sans-serif | 400 · 500 · 600 · 700 |
 
 ### Espaçamento Base
-```
-Pequeno: 0.5rem
-Médio: 1rem
-Grande: 2rem
-XL: 3rem
-```
+
+| Token | Valor | Uso |
+|-------|-------|-----|
+| XS | `0.25rem` | Gaps mínimos |
+| SM | `0.5rem` | Espaços internos pequenos |
+| MD | `1rem` | Padrão |
+| LG | `2rem` | Seções internas |
+| XL | `3rem` | Separação entre seções |
+| XXL | `6rem` | Padding de seções principais |
 
 ### Breakpoints
-```
-Mobile: < 768px
-Tablet: 768px - 1199px
-Desktop: 1200px+
-```
+
+| Viewport | Largura |
+|----------|---------|
+| Mobile | < 768px |
+| Tablet | 768px – 1199px |
+| Desktop | 1200px+ |
 
 ---
 
 ## 🚀 Scripts Disponíveis
 
 ```bash
-npm run dev       # Inicia servidor local (port 5173)
-npm run build     # Build de produção
-npm run preview   # Preview do build
+npm run dev      # Servidor local com hot-reload (http://localhost:5173)
+npm run build    # Build otimizado para produção → /dist
+npm run preview  # Preview local do build de produção
+npm run lint     # Análise estática com ESLint
 ```
 
 ---
 
 ## 📦 Dependências
 
-```json
-{
-  "react": "18.2.0",           // Framework UI
-  "react-dom": "18.2.0",       // DOM binding
-  "lucide-react": "latest"     // Ícones (26 usados)
-}
-```
+### Principais
 
-### Ícones Utilizados
-- Menu, X, ChevronDown (Navbar)
-- ArrowRight, TrendingUp (Hero)
-- Briefcase, Shield, Zap, Award (About)
-- Users, FileText, BarChart3, Heart (Shareholders)
-- Download, Eye (Reports)
-- Facebook, Twitter, LinkedIn, Mail (Footer)
+| Pacote | Versão | Descrição |
+|--------|--------|-----------|
+| `react` | ^19 | Framework UI |
+| `react-dom` | ^19 | Binding React → DOM |
+| `framer-motion` | ^12 | Animações declarativas |
+| `lenis` | ^1 | Smooth scroll suave |
+| `lucide-react` | ^1.7 | Biblioteca de ícones |
+| `styled-components` | ^6 | CSS-in-JS para componentes isolados |
+
+### Dev (Build & Qualidade)
+
+| Pacote | Descrição |
+|--------|-----------|
+| `vite` ^8 | Build tool ultra-rápido |
+| `@vitejs/plugin-react` | Suporte React no Vite |
+| `eslint` | Linter de código |
+| `eslint-plugin-react-hooks` | Regras para Hooks |
+| `eslint-plugin-react-refresh` | Hot reload seguro |
+
+### Ícones Utilizados (Lucide React)
+
+| Componente | Ícones |
+|-----------|--------|
+| Navbar | `Menu`, `X`, `ChevronDown` |
+| Hero | `ArrowRight`, `TrendingUp` |
+| About | `Briefcase`, `Shield`, `Zap`, `Award` |
+| Shareholders | `Users`, `FileText`, `BarChart3`, `Heart` |
+| Reports | `Download`, `Eye` |
+| Footer | `Facebook`, `Twitter`, `Linkedin`, `Mail` |
 
 ---
 
 ## ✅ Funcionalidades Implementadas
 
-- [x] Navbar responsivo com menu mobile
-- [x] Hero section com gráfico interativo
-- [x] About com 4 features cards
-- [x] Investments com gráfico em pizza animado
-- [x] Shareholders com 4 resource cards
-- [x] Reports com filtro por ano
-- [x] Footer com links e redes sociais
-- [x] Scroll suave (smooth scroll)
-- [x] Responsive design (mobile-first)
-- [x] Animações CSS (fadeIn, slide, float, glow)
+- [x] Navbar responsivo com menu mobile e blur no scroll
+- [x] Hero section com gráfico interativo e animações
+- [x] About com 4 feature cards e hover effects
+- [x] Investments com gráfico em pizza e barras de progresso
+- [x] Shareholders com 4 resource cards e CTA
+- [x] Reports com filtro por ano e lista de PDFs
+- [x] Footer com 4 colunas, links e redes sociais
+- [x] Scroll suave integrado com Lenis
+- [x] Animações declarativas com Framer Motion
+- [x] Design responsivo mobile-first (320px → 1920px)
+- [x] Animações CSS: fadeIn, slideInLeft, float, glow, shimmer, bounce, rotate
 - [x] Dark theme premium
-- [x] Paleta dourado/preto/branco
-- [x] Tipografia premium (Playfair + Inter)
-- [x] Hover states em todos os botões
-- [x] SEO ready (meta tags)
+- [x] Paleta dourado / preto / branco / cyan
+- [x] Tipografia premium (Playfair Display + Inter)
+- [x] Hover states em todos os elementos interativos
+- [x] SEO básico: meta description, Open Graph, `lang="pt-BR"`
 
 ---
 
 ## 🔮 Potenciais Extensões
 
-```javascript
-// Adicionar
-+ Modal/Dialog component
-+ Carrossel/Slider
-+ Formulário de contato
-+ Sistema de tema (light/dark toggle)
-+ Blog/News section
+```
+Componentes:
++ Modal / Drawer
++ Carrossel / Slider (Embla Carousel)
++ Formulário de contato (com validação)
 + Team members gallery
 + Testimonials carousel
++ Blog / News section
++ Video section / reel corporativo
 + Comparison tables
-+ Video section
-+ Chat bot
-+ Newsletter signup
-+ Advanced analytics
+
+Funcionalidades:
++ Light / Dark mode toggle
++ Internacionalização (i18n — PT / EN)
++ Newsletter signup (integração Mailchimp)
++ Chat bot (integração Intercom / Crisp)
++ Advanced analytics (PostHog / Mixpanel)
 + A/B testing
++ PWA (Progressive Web App)
 ```
 
 ---
 
-## 📚 Arquivos para Ler Primeiro
+## 📚 Ordem de Leitura da Documentação
 
-1. **QUICKSTART.md** - Para começar rápido (3 passos)
-2. **README.md** - Visão geral completa
-3. **CUSTOMIZATION.md** - Para personalizar
-4. **DEPLOYMENT.md** - Para colocar online
-
----
-
-## 🎓 O que Você Aprendeu
-
-✅ Estrutura de projeto React com Vite
-✅ Componentes funcionais com Hooks
-✅ CSS organizado por componente
-✅ Animações CSS avançadas
-✅ Design responsivo mobile-first
-✅ SEO e meta tags
-✅ Deploy e CI/CD
-✅ Best practices React
-✅ Git/GitHub workflow
+| # | Arquivo | Quando ler |
+|---|---------|-----------|
+| 1 | `QUICKSTART.md` | Primeiro — para rodar em 3 passos |
+| 2 | `README.md` | Visão geral completa do projeto |
+| 3 | `CUSTOMIZATION.md` | Quando quiser personalizar |
+| 4 | `DEPLOYMENT.md` | Quando quiser colocar online |
+| 5 | `PROJECT-STRUCTURE.md` | Para entender a arquitetura |
 
 ---
 
-## 💡 Próximas Etapas
+## 🎓 O Que Você Aprendeu
 
-1. **Instale**: `npm install`
-2. **Rode localmente**: `npm run dev`
-3. **Customizador**: Leia `CUSTOMIZATION.md`
-4. **Deploy**: Siga `DEPLOYMENT.md`
-5. **Celebre**: Seu site está online! 🎉
+✅ Estrutura de projeto React + Vite escalável  
+✅ Componentes funcionais com Hooks (useState, useEffect, useRef)  
+✅ Animações com Framer Motion  
+✅ Smooth scroll com Lenis  
+✅ CSS organizado por componente (co-location)  
+✅ Animações CSS avançadas com `@keyframes`  
+✅ Design responsivo mobile-first  
+✅ SEO e meta tags  
+✅ Deploy e CI/CD com GitHub Actions  
+✅ Boas práticas React  
+✅ Git / GitHub workflow  
 
 ---
 

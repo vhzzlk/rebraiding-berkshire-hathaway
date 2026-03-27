@@ -135,22 +135,29 @@ const MobileNavLink = styled(motion.a)`
   width: fit-content;
 `;
 
+// Single source of truth — keeps desktop & mobile nav always in sync
+const NAV_ITEMS = [
+  { label: 'Philosophy', href: '#about'        },
+  { label: 'Portfolio',  href: '#investments'  },
+  { label: 'Partners',   href: '#shareholders' },
+  { label: 'Letters',    href: '#reports'      },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Variantes super suaves para as linhas do botão hamburger
   const topMenuVariant = {
     closed: { rotate: 0, y: -4 },
-    open: { rotate: 45, y: 0 },
+    open:   { rotate: 45, y: 0 },
   };
   const bottomMenuVariant = {
     closed: { rotate: 0, y: 4 },
-    open: { rotate: -45, y: 0 },
+    open:   { rotate: -45, y: 0 },
   };
 
   const navLinkVariants = {
     hover: { scale: 1.05 },
-    tap: { scale: 0.95 },
+    tap:   { scale: 0.95 },
   };
 
   return (
@@ -169,38 +176,17 @@ export default function Navbar() {
         </Logo>
 
         <DesktopMenu>
-          <NavLink
-            href="#about"
-            variants={navLinkVariants}
-            whileHover="hover"
-            whileTap="tap"
-          >
-            Philosophy
-          </NavLink>
-          <NavLink
-            href="#investments"
-            variants={navLinkVariants}
-            whileHover="hover"
-            whileTap="tap"
-          >
-            Portfolio
-          </NavLink>
-          <NavLink
-            href="#shareholders"
-            variants={navLinkVariants}
-            whileHover="hover"
-            whileTap="tap"
-          >
-            Partners
-          </NavLink>
-          <NavLink
-            href="#reports"
-            variants={navLinkVariants}
-            whileHover="hover"
-            whileTap="tap"
-          >
-            Letters
-          </NavLink>
+          {NAV_ITEMS.map(({ label, href }) => (
+            <NavLink
+              key={href}
+              href={href}
+              variants={navLinkVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              {label}
+            </NavLink>
+          ))}
           <CtaButton
             whileHover={{ scale: 1.05, backgroundColor: '#fff', color: '#000' }}
             whileTap={{ scale: 0.9 }}
@@ -211,6 +197,8 @@ export default function Navbar() {
 
         <MenuButton
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={isOpen}
           style={{
             zIndex: 1001,
             borderColor: isOpen ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.15)',
@@ -257,26 +245,24 @@ export default function Navbar() {
             }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            {['Philosophy', 'Portfolio', 'Partners', 'Letters'].map(
-              (item, idx) => (
-                <MobileNavLink
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setIsOpen(false)}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.2 + idx * 0.1,
-                    ease: 'easeOut',
-                  }}
-                  whileTap={{ scale: 0.95, color: '#aaa' }}
-                >
-                  {item}
-                </MobileNavLink>
-              ),
-            )}
+            {NAV_ITEMS.map(({ label, href }, idx) => (
+              <MobileNavLink
+                key={href}
+                href={href}
+                onClick={() => setIsOpen(false)}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.2 + idx * 0.1,
+                  ease: 'easeOut',
+                }}
+                whileTap={{ scale: 0.95, color: '#aaa' }}
+              >
+                {label}
+              </MobileNavLink>
+            ))}
           </MobileMenu>
         )}
       </AnimatePresence>
