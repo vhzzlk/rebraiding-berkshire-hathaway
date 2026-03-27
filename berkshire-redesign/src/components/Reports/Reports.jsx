@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const Section = styled.section`
-  padding: 10rem 2rem; 
-  background-color: var(--bg-color); 
+  padding: 10rem 2rem;
+  background-color: var(--bg-color);
 `;
 
 const Container = styled.div`
-  max-width: 1400px; 
+  max-width: 1400px;
   margin: 0 auto;
 `;
 
@@ -22,9 +22,9 @@ const Header = styled.div`
 `;
 
 const Title = styled(motion.h2)`
-  font-family: var(--font-sans); 
+  font-family: var(--font-sans);
   font-size: clamp(3rem, 6vw, 5rem);
-  color: var(--text-color); 
+  color: var(--text-color);
   letter-spacing: -0.04em;
   font-weight: 500;
   line-height: 1;
@@ -36,33 +36,37 @@ const Sub = styled(motion.span)`
 `;
 
 const Grid = styled.div`
-  display: grid; 
-  grid-template-columns: 1fr; 
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
-  @media (min-width: 768px) { grid-template-columns: 1fr 1fr; }
-  @media (min-width: 1024px) { grid-template-columns: repeat(3, 1fr); }
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const ReportCard = styled(motion.a)`
-  display: flex; 
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 3rem 2rem; 
+  padding: 3rem 2rem;
   background: var(--panel-color);
-  border-radius: 20px; 
+  border-radius: 20px;
   min-height: 250px;
 `;
 
 const ReportYear = styled.span`
-  font-weight: 500; 
-  color: var(--text-color); 
+  font-weight: 500;
+  color: var(--text-color);
   font-size: 3rem;
   letter-spacing: -0.05em;
   line-height: 1;
 `;
 
 const ReportDesc = styled.span`
-  color: var(--muted-text); 
+  color: var(--muted-text);
   font-size: 1.1rem;
 `;
 
@@ -77,7 +81,7 @@ export default function Reports() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             Annual Letters
           </Title>
@@ -92,16 +96,27 @@ export default function Reports() {
         </Header>
         <Grid>
           {years.map((year, idx) => (
-            <ReportCard 
-              key={year} 
+            <ReportCard
+              key={year}
               href="#!"
-              onClick={(e) => e.preventDefault()}
+              onClick={e => e.preventDefault()}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -10, backgroundColor: "#ffffff", transition: { duration: 0.2, delay: 0 } }}
-              whileTap={{ scale: 0.95, transition: { duration: 0.1, delay: 0 } }}
-              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: '-50px' }}
+              whileHover={{
+                y: -10,
+                backgroundColor: '#ffffff',
+                transition: { duration: 0.2, delay: 0 },
+              }}
+              whileTap={{
+                scale: 0.95,
+                transition: { duration: 0.1, delay: 0 },
+              }}
+              transition={{
+                duration: 0.6,
+                delay: idx * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               <ReportYear>{year}</ReportYear>
               <ReportDesc>Letter to Shareholders &rarr;</ReportDesc>

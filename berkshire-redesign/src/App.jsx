@@ -10,10 +10,14 @@ import Reports from './components/Reports/Reports';
 import Footer from './components/Footer/Footer';
 
 const AppContainer = styled.div`
-  display: flex; flex-direction: column; min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
-const MainContent = styled.main`flex: 1;`;
+const MainContent = styled.main`
+  flex: 1;
+`;
 
 function App() {
   useEffect(() => {
@@ -21,13 +25,13 @@ function App() {
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
-    
+
     // Rolar para o topo logo ao carregar
     window.scrollTo(0, 0);
 
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: 'vertical',
       gestureDirection: 'vertical',
       smooth: true,
@@ -35,17 +39,17 @@ function App() {
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
-    })
+    });
 
     function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf)
+    requestAnimationFrame(raf);
 
     // Interceptar todos os cliques em links internos e gerenciar via Lenis
-    const handleAnchorClick = (e) => {
+    const handleAnchorClick = e => {
       const target = e.currentTarget;
       const href = target.getAttribute('href');
       if (href && href.startsWith('#') && href !== '#') {
@@ -67,18 +71,18 @@ function App() {
         anchor.addEventListener('click', handleAnchorClick);
       });
     }, 500);
-    
+
     return () => {
       const anchors = document.querySelectorAll('a[href^="#"]');
       anchors.forEach(anchor => {
         anchor.removeEventListener('click', handleAnchorClick);
       });
       lenis.destroy();
-    }
+    };
   }, []);
 
   return (
-    <AppContainer>
+    <AppContainer id="top">
       <Navbar />
       <MainContent>
         <Hero />

@@ -3,42 +3,48 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NavHeader = styled(motion.header)`
-  position: fixed; 
-  top: 0; 
-  width: 100%; 
+  position: fixed;
+  top: 0;
+  width: 100%;
   padding: 1.5rem 2rem;
   z-index: 1000;
-  display: flex; 
-  justify-content: space-between; 
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   mix-blend-mode: difference;
   color: #fff;
 `;
 
-const Logo = styled(motion.div)`
-  font-family: var(--font-serif); 
-  font-size: 1.5rem; 
+const Logo = styled(motion.a)`
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: -0.02em;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  outline: none;
 `;
 
 const DesktopMenu = styled.nav`
-  display: flex; 
+  display: flex;
   gap: 3rem;
   align-items: center;
-  @media (max-width: 768px) { display: none; }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavLink = styled(motion.a)`
-  font-family: var(--font-sans); 
-  font-size: 0.9rem; 
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   position: relative;
   cursor: pointer;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -50,13 +56,15 @@ const NavLink = styled(motion.a)`
     transition: width 0.3s ease;
   }
 
-  &:hover::after { width: 100%; }
+  &:hover::after {
+    width: 100%;
+  }
 `;
 
 const CtaButton = styled(motion.button)`
   background: transparent;
   color: inherit;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0.6rem 1.5rem;
   border-radius: 50px;
   font-family: var(--font-sans);
@@ -75,19 +83,21 @@ const CtaButton = styled(motion.button)`
 `;
 
 const MenuButton = styled(motion.button)`
-  display: none; 
-  background: transparent; 
-  border: none; 
-  cursor: pointer; 
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
   color: currentColor;
   width: 44px;
   height: 44px;
   position: relative;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   align-items: center;
   justify-content: center;
-  @media (max-width: 768px) { display: flex; }
+  @media (max-width: 768px) {
+    display: flex;
+  }
 `;
 
 const BurgerLine = styled(motion.span)`
@@ -99,24 +109,26 @@ const BurgerLine = styled(motion.span)`
 `;
 
 const MobileMenu = styled(motion.nav)`
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100vw; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  background: var(--text-color); 
+  background: var(--text-color);
   color: var(--bg-color);
-  padding: 8rem 2rem 6rem; 
+  padding: 8rem 2rem 6rem;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 2rem;
   z-index: 999;
-  @media (min-width: 769px) { display: none !important; }
+  @media (min-width: 769px) {
+    display: none !important;
+  }
 `;
 
 const MobileNavLink = styled(motion.a)`
-  font-family: var(--font-sans); 
-  font-size: 3.5rem; 
+  font-family: var(--font-sans);
+  font-size: 3.5rem;
   font-weight: 400;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -129,16 +141,16 @@ export default function Navbar() {
   // Variantes super suaves para as linhas do botão hamburger
   const topMenuVariant = {
     closed: { rotate: 0, y: -4 },
-    open: { rotate: 45, y: 0 }
+    open: { rotate: 45, y: 0 },
   };
   const bottomMenuVariant = {
     closed: { rotate: 0, y: 4 },
-    open: { rotate: -45, y: 0 }
+    open: { rotate: -45, y: 0 },
   };
 
   const navLinkVariants = {
     hover: { scale: 1.05 },
-    tap: { scale: 0.95 }
+    tap: { scale: 0.95 },
   };
 
   return (
@@ -148,40 +160,77 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <Logo whileTap={{ scale: 0.9 }}>BH.</Logo>
-        
+        <Logo
+          href="#top"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          BH.
+        </Logo>
+
         <DesktopMenu>
-          <NavLink href="#about" variants={navLinkVariants} whileHover="hover" whileTap="tap">Philosophy</NavLink>
-          <NavLink href="#investments" variants={navLinkVariants} whileHover="hover" whileTap="tap">Portfolio</NavLink>
-          <NavLink href="#shareholders" variants={navLinkVariants} whileHover="hover" whileTap="tap">Partners</NavLink>
-          <NavLink href="#reports" variants={navLinkVariants} whileHover="hover" whileTap="tap">Letters</NavLink>
-          <CtaButton 
-            whileHover={{ scale: 1.05, backgroundColor: '#fff', color: '#000' }} 
+          <NavLink
+            href="#about"
+            variants={navLinkVariants}
+            whileHover="hover"
+            whileTap="tap"
+          >
+            Philosophy
+          </NavLink>
+          <NavLink
+            href="#investments"
+            variants={navLinkVariants}
+            whileHover="hover"
+            whileTap="tap"
+          >
+            Portfolio
+          </NavLink>
+          <NavLink
+            href="#shareholders"
+            variants={navLinkVariants}
+            whileHover="hover"
+            whileTap="tap"
+          >
+            Partners
+          </NavLink>
+          <NavLink
+            href="#reports"
+            variants={navLinkVariants}
+            whileHover="hover"
+            whileTap="tap"
+          >
+            Letters
+          </NavLink>
+          <CtaButton
+            whileHover={{ scale: 1.05, backgroundColor: '#fff', color: '#000' }}
             whileTap={{ scale: 0.9 }}
           >
             Client Portal
           </CtaButton>
         </DesktopMenu>
 
-        <MenuButton 
-          onClick={() => setIsOpen(!isOpen)} 
-          style={{ zIndex: 1001, borderColor: isOpen ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.15)' }}
+        <MenuButton
+          onClick={() => setIsOpen(!isOpen)}
+          style={{
+            zIndex: 1001,
+            borderColor: isOpen ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.15)',
+          }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.85 }}
           animate={{
-            color: isOpen ? "var(--bg-color)" : "#fff",
+            color: isOpen ? 'var(--bg-color)' : '#fff',
           }}
           transition={{ duration: 0.3 }}
         >
-          <BurgerLine 
+          <BurgerLine
             variants={topMenuVariant}
-            animate={isOpen ? "open" : "closed"}
+            animate={isOpen ? 'open' : 'closed'}
             initial="closed"
             transition={{ ease: [0.32, 0.72, 0, 1], duration: 0.5 }}
           />
-          <BurgerLine 
+          <BurgerLine
             variants={bottomMenuVariant}
-            animate={isOpen ? "open" : "closed"}
+            animate={isOpen ? 'open' : 'closed'}
             initial="closed"
             transition={{ ease: [0.32, 0.72, 0, 1], duration: 0.5 }}
           />
@@ -191,25 +240,43 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <MobileMenu
-            initial={{ y: '-100%', borderBottomLeftRadius: '100%', borderBottomRightRadius: '100%' }}
-            animate={{ y: 0, borderBottomLeftRadius: '0%', borderBottomRightRadius: '0%' }}
-            exit={{ y: '-100%', borderBottomLeftRadius: '100%', borderBottomRightRadius: '100%' }}
+            initial={{
+              y: '-100%',
+              borderBottomLeftRadius: '100%',
+              borderBottomRightRadius: '100%',
+            }}
+            animate={{
+              y: 0,
+              borderBottomLeftRadius: '0%',
+              borderBottomRightRadius: '0%',
+            }}
+            exit={{
+              y: '-100%',
+              borderBottomLeftRadius: '100%',
+              borderBottomRightRadius: '100%',
+            }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            {['Philosophy', 'Portfolio', 'Partners', 'Letters'].map((item, idx) => (
-              <MobileNavLink 
-                key={item}
-                href={`#${item.toLowerCase()}`} 
-                onClick={() => setIsOpen(false)}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, delay: 0.2 + (idx * 0.1), ease: "easeOut" }}
-                whileTap={{ scale: 0.95, color: '#aaa' }}
-              >
-                {item}
-              </MobileNavLink>
-            ))}
+            {['Philosophy', 'Portfolio', 'Partners', 'Letters'].map(
+              (item, idx) => (
+                <MobileNavLink
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setIsOpen(false)}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.2 + idx * 0.1,
+                    ease: 'easeOut',
+                  }}
+                  whileTap={{ scale: 0.95, color: '#aaa' }}
+                >
+                  {item}
+                </MobileNavLink>
+              ),
+            )}
           </MobileMenu>
         )}
       </AnimatePresence>

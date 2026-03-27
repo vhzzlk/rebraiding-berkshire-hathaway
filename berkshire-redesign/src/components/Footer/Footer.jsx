@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const FooterWrapper = styled.footer`
-  background-color: #000000; 
-  color: #ffffff; 
+  background-color: #000000;
+  color: #ffffff;
   padding: 8rem 2rem 5rem;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
@@ -14,9 +14,9 @@ const FooterWrapper = styled.footer`
 `;
 
 const Container = styled.div`
-  max-width: 1400px; 
-  margin: 0 auto; 
-  display: flex; 
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
   flex-direction: column;
 `;
 
@@ -34,26 +34,28 @@ const TopSection = styled.div`
 `;
 
 const Logo = styled.div`
-  font-family: var(--font-serif); 
-  font-size: clamp(3rem, 6vw, 6rem); 
-  font-weight: 400; 
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 400;
   line-height: 1;
   letter-spacing: -0.02em;
 `;
 
 const Links = styled.div`
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  gap: 1rem; 
+  gap: 1rem;
 `;
 
 const FooterLink = styled(motion.a)`
-  color: #888888; 
-  font-size: 1.1rem; 
+  color: #888888;
+  font-size: 1.1rem;
   transition: color 0.3s ease;
   display: inline-block;
   transform-origin: left center;
-  &:hover { color: #ffffff; }
+  &:hover {
+    color: #ffffff;
+  }
 `;
 
 const BottomSection = styled.div`
@@ -73,19 +75,29 @@ export default function Footer() {
     <FooterWrapper>
       <Container>
         <TopSection>
-          <Logo>Berkshire<br/>Hathaway</Logo>
+          <Logo>
+            Berkshire
+            <br />
+            Hathaway
+          </Logo>
           <Links>
-            {['Terms of Use', 'Privacy Policy', 'Contact', 'SEC Filings'].map((text, idx) => (
-              <FooterLink 
-                key={idx} 
-                href="#!"
-                onClick={(e) => e.preventDefault()}
-                whileHover={{ x: 8, color: '#ffffff', transition: { duration: 0.15 } }}
-                whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
-              >
-                {text}
-              </FooterLink>
-            ))}
+            {['Terms of Use', 'Privacy Policy', 'Contact', 'SEC Filings'].map(
+              (text, idx) => (
+                <FooterLink
+                  key={idx}
+                  href="#!"
+                  onClick={e => e.preventDefault()}
+                  whileHover={{
+                    x: 8,
+                    color: '#ffffff',
+                    transition: { duration: 0.15 },
+                  }}
+                  whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
+                >
+                  {text}
+                </FooterLink>
+              ),
+            )}
           </Links>
         </TopSection>
         <BottomSection>
