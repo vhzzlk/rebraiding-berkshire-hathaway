@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const FooterWrapper = styled.footer`
   background-color: #000000; 
   color: #ffffff; 
-  padding: 8rem 2rem 2rem;
+  padding: 8rem 2rem 5rem;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   margin-top: -40px;
@@ -46,10 +47,12 @@ const Links = styled.div`
   gap: 1rem; 
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled(motion.a)`
   color: #888888; 
   font-size: 1.1rem; 
   transition: color 0.3s ease;
+  display: inline-block;
+  transform-origin: left center;
   &:hover { color: #ffffff; }
 `;
 
@@ -72,10 +75,17 @@ export default function Footer() {
         <TopSection>
           <Logo>Berkshire<br/>Hathaway</Logo>
           <Links>
-            <FooterLink href="#">Terms of Use</FooterLink>
-            <FooterLink href="#">Privacy Policy</FooterLink>
-            <FooterLink href="#">Contact</FooterLink>
-            <FooterLink href="#">SEC Filings</FooterLink>
+            {['Terms of Use', 'Privacy Policy', 'Contact', 'SEC Filings'].map((text, idx) => (
+              <FooterLink 
+                key={idx} 
+                href="#!"
+                onClick={(e) => e.preventDefault()}
+                whileHover={{ x: 8, color: '#ffffff', transition: { duration: 0.15 } }}
+                whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
+              >
+                {text}
+              </FooterLink>
+            ))}
           </Links>
         </TopSection>
         <BottomSection>

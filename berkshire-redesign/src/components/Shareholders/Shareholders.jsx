@@ -92,10 +92,13 @@ export default function Shareholders() {
           {links.map((link, idx) => (
             <LinkItem 
               key={idx} 
-              href="#"
+              href="#!"
+              onClick={(e) => e.preventDefault()}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ x: 10, backgroundColor: "var(--bg-color)", transition: { duration: 0.2, delay: 0 } }}
+              whileTap={{ scale: 0.95, transition: { duration: 0.1, delay: 0 } }}
               transition={{ duration: 0.5, delay: 0.2 + (idx * 0.1), ease: "easeOut" }}
             >
               <span>{link}</span>

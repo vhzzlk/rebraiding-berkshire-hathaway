@@ -50,10 +50,7 @@ const ReportCard = styled(motion.a)`
   padding: 3rem 2rem; 
   background: var(--panel-color);
   border-radius: 20px; 
-  transition: all 0.4s ease;
   min-height: 250px;
-
-  &:hover { transform: scale(0.98); }
 `;
 
 const ReportYear = styled.span`
@@ -97,10 +94,13 @@ export default function Reports() {
           {years.map((year, idx) => (
             <ReportCard 
               key={year} 
-              href="#"
+              href="#!"
+              onClick={(e) => e.preventDefault()}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ y: -10, backgroundColor: "#ffffff", transition: { duration: 0.2, delay: 0 } }}
+              whileTap={{ scale: 0.95, transition: { duration: 0.1, delay: 0 } }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <ReportYear>{year}</ReportYear>
