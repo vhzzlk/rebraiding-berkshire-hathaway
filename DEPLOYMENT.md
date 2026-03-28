@@ -15,6 +15,7 @@ Gera a pasta `/dist` com arquivos otimizados e minificados, prontos para qualque
 ### 1️⃣ Vercel ✅ (Recomendado)
 
 **Via CLI:**
+
 ```bash
 npm i -g vercel
 vercel login
@@ -22,6 +23,7 @@ vercel --prod
 ```
 
 **Via dashboard (mais fácil):**
+
 1. Acesse [vercel.com](https://vercel.com)
 2. Conecte seu repositório GitHub
 3. Deploy automático a cada push em `main`
@@ -33,6 +35,7 @@ vercel --prod
 ### 2️⃣ Netlify
 
 **Via CLI:**
+
 ```bash
 npm i -g netlify-cli
 netlify login
@@ -41,6 +44,7 @@ netlify deploy --prod --dir=dist
 ```
 
 **Via drag-and-drop:**
+
 1. Rode `npm run build` localmente
 2. Arraste a pasta `/dist` em [app.netlify.com](https://app.netlify.com)
 
@@ -64,6 +68,7 @@ npm install --save-dev gh-pages
 ```
 
 Em `package.json`, adicione:
+
 ```json
 {
   "homepage": "https://seu-usuario.github.io/berkshire-redesign",
@@ -94,6 +99,7 @@ scp -r dist/ user@seu-servidor:/var/www/berkshire/
 ```
 
 **Configuração Nginx:**
+
 ```nginx
 server {
     listen 80;
@@ -137,22 +143,22 @@ Edite em `index.html`:
 
 ```html
 <!-- SEO Básico -->
-<meta name="description" content="Descrição clara do site (150–160 chars)">
-<meta name="keywords"    content="palavras-chave, separadas, por-virgula">
-<meta name="author"      content="Seu Nome">
+<meta name="description" content="Descrição clara do site (150–160 chars)" />
+<meta name="keywords" content="palavras-chave, separadas, por-virgula" />
+<meta name="author" content="Seu Nome" />
 
 <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
-<meta property="og:title"       content="Título para compartilhamento">
-<meta property="og:description" content="Descrição para redes sociais">
-<meta property="og:image"       content="https://seu-site.com/og-image.png">
-<meta property="og:url"         content="https://seu-site.com">
-<meta property="og:type"        content="website">
+<meta property="og:title" content="Título para compartilhamento" />
+<meta property="og:description" content="Descrição para redes sociais" />
+<meta property="og:image" content="https://seu-site.com/og-image.png" />
+<meta property="og:url" content="https://seu-site.com" />
+<meta property="og:type" content="website" />
 
 <!-- Twitter Card -->
-<meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="Título para Twitter">
-<meta name="twitter:description" content="Descrição para Twitter">
-<meta name="twitter:image"       content="https://seu-site.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Título para Twitter" />
+<meta name="twitter:description" content="Descrição para Twitter" />
+<meta name="twitter:image" content="https://seu-site.com/og-image.png" />
 ```
 
 ---
@@ -160,12 +166,14 @@ Edite em `index.html`:
 ## 📊 Análise & Performance
 
 ### Google Lighthouse
+
 1. Abra DevTools → **F12**
 2. Vá em aba **Lighthouse**
 3. Clique **Analyze page load**
 4. Analise os scores: Performance, Accessibility, SEO, Best Practices
 
 ### Google PageSpeed Insights
+
 Acesse [pagespeed.web.dev](https://pagespeed.web.dev/) e cole a URL do seu site.
 
 ---
@@ -173,49 +181,56 @@ Acesse [pagespeed.web.dev](https://pagespeed.web.dev/) e cole a URL do seu site.
 ## 🔐 Segurança
 
 ### HTTPS
-| Plataforma | SSL |
-|------------|-----|
-| Vercel | Automático |
-| Netlify | Automático |
-| GitHub Pages | Automático |
+
+| Plataforma       | SSL                                           |
+| ---------------- | --------------------------------------------- |
+| Vercel           | Automático                                    |
+| Netlify          | Automático                                    |
+| GitHub Pages     | Automático                                    |
 | Servidor próprio | Use [Let's Encrypt](https://letsencrypt.org/) |
 
 ### Headers de Segurança
 
 Em `vite.config.js`:
+
 ```javascript
 export default {
   server: {
     headers: {
-      'X-Content-Type-Options': 'nosniff',
-      'X-Frame-Options':        'DENY',
-      'X-XSS-Protection':       '1; mode=block',
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "X-XSS-Protection": "1; mode=block",
     },
   },
-}
+};
 ```
 
 ---
 
 ## 📈 Monitoramento
 
-| Ferramenta | Uso |
-|------------|-----|
-| Vercel Analytics | Métricas integradas (Web Vitals) |
+| Ferramenta       | Uso                                 |
+| ---------------- | ----------------------------------- |
+| Vercel Analytics | Métricas integradas (Web Vitals)    |
 | Google Analytics | Tráfego e comportamento de usuários |
-| Sentry | Rastrear erros em produção |
-| UptimeRobot | Monitorar disponibilidade do site |
+| Sentry           | Rastrear erros em produção          |
+| UptimeRobot      | Monitorar disponibilidade do site   |
 
 ### Adicionar Google Analytics
 
 ```html
 <!-- Em index.html, antes de </head> -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XXXXXXXXXX");
 </script>
 ```
 
@@ -243,8 +258,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - run: npm ci
 
@@ -267,11 +282,11 @@ jobs:
 1. Registre um domínio (Namecheap, GoDaddy, Registro.br…)
 2. Configure o DNS:
 
-| Plataforma | Como apontar |
-|------------|-------------|
-| Vercel | Dashboard → Domains → Add |
-| Netlify | Dashboard → Domain Management |
-| GitHub Pages | Arquivo `CNAME` + config DNS |
+| Plataforma       | Como apontar                   |
+| ---------------- | ------------------------------ |
+| Vercel           | Dashboard → Domains → Add      |
+| Netlify          | Dashboard → Domain Management  |
+| GitHub Pages     | Arquivo `CNAME` + config DNS   |
 | Servidor próprio | DNS tipo A apontando para o IP |
 
 ---
@@ -279,6 +294,7 @@ jobs:
 ## 🐛 Troubleshooting
 
 ### Build falha
+
 ```bash
 # Limpe cache e reinstale
 # Windows:
@@ -293,11 +309,13 @@ npm run build
 ```
 
 ### Página branca após deploy
+
 - Verifique o console (F12) por erros
 - Verifique Network por 404s (assets não encontrados)
 - Se usou GitHub Pages, verifique o `base` no `vite.config.js`
 
 ### Links internos quebrados
+
 - Confirme que o servidor tem a regra `try_files` para SPAs
 - Para Vite + React Router, adicione `"rewrites"` no Vercel/Netlify
 
@@ -333,6 +351,6 @@ git push origin feature/nova-secao
 ✅ Sem 404s na aba Network  
 ✅ Todos os links funcionam  
 ✅ Responsivo em mobile  
-✅ Lighthouse score > 80  
+✅ Lighthouse score > 80
 
 Seu site está pronto para o mundo! 🌍

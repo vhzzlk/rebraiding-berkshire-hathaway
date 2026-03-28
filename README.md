@@ -128,11 +128,10 @@ berkshire-redesign/
 - Botão CTA destacado
 
 ### Hero
-- Título com highlight em gradiente
-- Gráfico de linha interativo
-- Cards de estatísticas animados
+- Título com efeito parallax (Enduring Value)
+- Imagens de edifícios em escala de cinza
 - Dual CTA buttons
-- Scroll indicator animado
+- Scroll indicator animado e efeito de escala
 
 ### About
 - Título "Our Philosophy" com sticky behavior
@@ -171,7 +170,6 @@ berkshire-redesign/
 | `glow` | Brilho nos cards em hover |
 | `shimmer` | Efeito shine nas barras de progresso |
 | `bounce` | Animação do scroll indicator |
-| `rotate` | Rotação do gráfico de pizza |
 | Framer Motion | Transições de página e micro-interações |
 
 ---
@@ -206,7 +204,7 @@ berkshire-redesign/
 Edite as variáveis CSS em `src/index.css`:
 ```css
 :root {
-  --gold: #novaCorHex;
+  --bg-color: #novaCorHex;
   /* ... outras variáveis */
 }
 ```
@@ -219,7 +217,7 @@ Edite as variáveis CSS em `src/index.css`:
 
 ### Modificar Fontes
 1. Atualize o link `<link>` em `index.html`
-2. Atualize as variáveis `--font-display` e `--font-body` em `src/index.css`
+2. Atualize as variáveis `--font-sans` e `--font-serif` em `src/index.css`
 
 > Para mais detalhes, leia [`CUSTOMIZATION.md`](./CUSTOMIZATION.md)
 
