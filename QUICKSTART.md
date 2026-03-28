@@ -22,12 +22,12 @@ npm run dev
 | Seção | Descrição |
 |-------|-----------|
 | **Navbar** | Menu responsivo com blur no scroll |
-| **Hero** | Seção principal com gráfico e estatísticas |
-| **About** | Sobre a empresa (4 feature cards) |
-| **Investments** | Portfolio com gráfico em pizza animado |
-| **Shareholders** | Recursos para acionistas (4 cards + CTA) |
-| **Reports** | Relatórios financeiros com filtro por ano |
-| **Footer** | Rodapé com links e redes sociais |
+| **Hero** | Seção em parallax com imagens P&B e título expansivo |
+| **About** | Nossa Filosofia com título sticky e foco editorial |
+| **Investments** | Strategic Portfolio com 3 cards interativos |
+| **Shareholders** | For Our Partners (links interativos e animações) |
+| **Reports** | Annual Letters (grid de arquivos 2024-2019) |
+| **Footer** | Rodapé corporativo em preto total (#000000) |
 
 ---
 

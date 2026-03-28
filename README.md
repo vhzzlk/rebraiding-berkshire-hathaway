@@ -6,16 +6,16 @@ Um rebranding premium e moderno do site da Berkshire Hathaway, com design corpor
 
 ## ✨ Features
 
-- **Design Premium** — Paleta luxuosa (Preto + Branco + Dourado)
+- **Design Premium** — Paleta corporativa minimalista (Cinza + Branco + Preto)
 - **Navbar Moderna** — Menu responsivo com efeito de scroll e blur
 - **Hero Section Impactante** — Animações suaves com Framer Motion e gráficos interativos
 - **Scroll Suave** — Integrado com Lenis para experiência fluida
 - **Seções Otimizadas**:
-  - **About** — Sobre a empresa com cards de features
-  - **Investments** — Portfolio com gráfico em pizza animado
-  - **Shareholders** — Recursos para acionistas
-  - **Reports** — Relatórios financeiros filtrados por ano
-- **Footer Completo** — Links, redes sociais e informações
+  - **About** — Nossa Filosofia com texto expansivo
+- **Strategic Portfolio** — Grid de 3 cards interativos (Wholly-Owned, Equities, Capital)
+- **Shareholders** — Links interativos com animações de hover
+- **Annual Letters** — Arquivo de cartas aos acionistas (2024-2019)
+- **Footer Corporativo** — Design em preto total com links utilitários
 - **100% Responsivo** — Mobile-first design
 - **Animações Suaves** — Transições e micro-interações (Framer Motion + CSS)
 - **Performance Otimizada** — Vite 8 + React 19 para máxima velocidade
@@ -27,14 +27,12 @@ Um rebranding premium e moderno do site da Berkshire Hathaway, com design corpor
 ### Paleta de Cores
 
 ```css
---black:      #0a0e27   /* Background principal        */
---dark:       #1a1f3a   /* Backgrounds secundários      */
---gold:       #d4af37   /* Cor primária — luxo          */
---gold-light: #e8c547   /* Variação do ouro             */
---white:      #ffffff   /* Texto principal              */
---gray-light: #f5f5f5   /* Backgrounds leves            */
---gray-dark:  #2a2f4a   /* Borders e elementos          */
---accent:     #00d9ff   /* Acentos em cyan              */
+--bg-color:     #e5e5e5;   /* Background principal         */
+--panel-color:  #ffffff;   /* Backgrounds de cards/seções  */
+--text-color:   #000000;   /* Texto principal              */
+--muted-text:   #555555;   /* Texto secundário             */
+--border-color: #7a7a7a;   /* Bordas e divisores           */
+--accent-color: #000000;   /* Cor de destaque              */
 ```
 
 ### Tipografia
@@ -124,7 +122,7 @@ berkshire-redesign/
 ## 🎯 Componentes
 
 ### Navbar
-- Logo com gradiente dourado
+- Logo minimalista
 - Menu responsivo com toggle mobile
 - Efeito de blur ao fazer scroll
 - Botão CTA destacado
@@ -137,28 +135,24 @@ berkshire-redesign/
 - Scroll indicator animado
 
 ### About
-- Texto descritivo da empresa
-- 4 cards de features com ícones
-- Efeito hover com barra top
-- Design limpo e elegante
+- Título "Our Philosophy" com sticky behavior
+- Texto focado em visão de longo prazo e integridade
+- Layout em grid com destaque de tipografia
 
-### Investments
-- Gráfico de pizza animado (CSS)
-- 6 investimentos com barras de progresso
-- Animação de shimmer nas barras
-- Porcentagens dinâmicas
+### Strategic Portfolio (Investments)
+- Grid de 3 cards principais
+- Efeito de hover: elevação e mudança de background
+- Foco em negócios 100% controlados e equidades
 
-### Shareholders
-- 4 cards de recursos
-- Ícones com gradiente
-- Call-to-action destacado
-- Links com animação hover
+### For Our Partners (Shareholders)
+- Comunicação direta com parceiros
+- Lista de links interativos com setas indicadoras
+- Efeito de hover com padding dinâmico e background sutil
 
-### Reports
-- Filtro por ano
-- Lista de relatórios (PDF)
-- Botões View / Download
-- Metadados: tipo, tamanho, data
+### Annual Letters (Reports)
+- Grid de cards de 2024 a 2019
+- Foco em "Letters to Shareholders"
+- Efeito de escala e elevação ao passar o mouse
 
 ### Footer
 - 4 colunas de navegação

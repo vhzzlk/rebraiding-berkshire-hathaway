@@ -6,38 +6,31 @@ Abra `src/index.css` e edite as variáveis no `:root`:
 
 ```css
 :root {
-  --black:      #0a0e27;   /* Background principal        */
-  --dark:       #1a1f3a;   /* Backgrounds secundários      */
-  --gold:       #d4af37;   /* Cor primária — luxo          */
-  --gold-light: #e8c547;   /* Variação clara do ouro       */
-  --white:      #ffffff;   /* Texto principal              */
-  --gray-light: #f5f5f5;   /* Backgrounds leves            */
-  --gray-dark:  #2a2f4a;   /* Borders e elementos          */
-  --accent:     #00d9ff;   /* Cyan — acentos secundários   */
+  --bg-color:     #e5e5e5;   /* Background principal         */
+  --panel-color:  #ffffff;   /* Backgrounds de cards/seções  */
+  --text-color:   #000000;   /* Texto principal              */
+  --muted-text:   #555555;   /* Texto secundário             */
+  --border-color: #7a7a7a;   /* Bordas e divisores           */
+  --accent-color: #000000;   /* Cor de destaque              */
 }
 ```
 
-### Exemplos de Temas Alternativos
-
-**Tema Roxo:**
+**Tema Dark (Inverter):**
 ```css
---gold:       #9d4edd;
---gold-light: #c77dff;
---accent:     #7209b7;
+--bg-color:     #0a0e27;
+--panel-color:  #1a1f3a;
+--text-color:   #ffffff;
+--muted-text:   #aaaaaa;
+--border-color: #2a2f4a;
+--accent-color: #d4af37;
 ```
 
-**Tema Azul Corporativo:**
+**Tema Azul Profissional:**
 ```css
---gold:       #2563eb;
---gold-light: #60a5fa;
---accent:     #06b6d4;
-```
-
-**Tema Verde Natureza:**
-```css
---gold:       #16a34a;
---gold-light: #4ade80;
---accent:     #84cc16;
+--bg-color:     #f0f4f8;
+--panel-color:  #ffffff;
+--text-color:   #1e293b;
+--accent-color: #2563eb;
 ```
 
 ---
@@ -56,8 +49,8 @@ Em `index.html`, atualize o import do Google Fonts:
 Em `src/index.css`, atualize as variáveis:
 ```css
 :root {
-  --font-display: 'Playfair Display', serif;
-  --font-body:    'Inter', sans-serif;
+  --font-sans:  'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
 }
 ```
 
@@ -142,34 +135,33 @@ const features = [
 ];
 ```
 
-### Investments — `src/components/Investments/Investments.jsx`
+### Strategic Portfolio — `src/components/Investments/Investments.jsx`
 
 ```javascript
-const investments = [
+const portfolio = [
   {
-    name:        'Categoria',
-    percentage:  '25%',
-    description: 'Descrição do ativo.',
-    color:       '#d4af37',
+    num: '01',
+    title: 'Wholly-Owned',
+    desc: 'Operating businesses span insurance, freight rail, energy generation, and manufacturing.',
   },
-  // Adicione quantos quiser
+  // Adicione ou remova cards aqui
 ];
 ```
 
-### Reports — `src/components/Reports/Reports.jsx`
+### Partners (Shareholders) — `src/components/Shareholders/Shareholders.jsx`
 
 ```javascript
-const reports = {
-  2025: [
-    {
-      title: 'Nome do Relatório',
-      type:  'PDF',
-      size:  '12.4 MB',
-      date:  'Janeiro 2025',
-    },
-    // Adicione mais relatórios
-  ],
-};
+const links = [
+  'Annual Meeting Information',
+  "Owner's Manual",
+  'Proxy Materials',
+];
+```
+
+### Annual Letters — `src/components/Reports/Reports.jsx`
+
+```javascript
+const years = [2024, 2023, 2022, 2021, 2020, 2019];
 ```
 
 ---

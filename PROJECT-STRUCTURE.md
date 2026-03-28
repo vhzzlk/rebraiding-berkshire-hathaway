@@ -40,12 +40,10 @@ berkshire-redesign/
         │   └── Investments.css       # Estilos + animação shimmer
         │
         ├── Shareholders/
-        │   ├── Shareholders.jsx      # 4 resource cards + CTA para acionistas
-        │   └── Shareholders.css      # Estilos dos cards + gradients
+        │   └── Shareholders.jsx      # Lista de parcerias com links interativos
         │
         ├── Reports/
-        │   ├── Reports.jsx           # Filtro por ano + lista de PDFs
-        │   └── Reports.css           # Estilos dos itens de relatório
+        │   └── Reports.jsx           # Grid das Annual Letters (2024-2019)
         │
         ├── Footer/
         │   ├── Footer.jsx            # Rodapé: 4 colunas, socials, copyright
@@ -149,14 +147,12 @@ Cada componente é **autônomo**: tem seu próprio JSX + CSS e pode ser modifica
 
 | Variável | Hex | Uso |
 |----------|-----|-----|
-| `--black` | `#0a0e27` | Background principal |
-| `--dark` | `#1a1f3a` | Backgrounds secundários |
-| `--gold` | `#d4af37` | Cor primária / CTAs |
-| `--gold-light` | `#e8c547` | Hover states / destaques |
-| `--white` | `#ffffff` | Texto principal |
-| `--gray-light` | `#f5f5f5` | Backgrounds leves |
-| `--gray-dark` | `#2a2f4a` | Borders e elementos |
-| `--accent` | `#00d9ff` | Cyan — acentos secundários |
+| `--bg-color` | `#e5e5e5` | Background principal |
+| `--panel-color` | `#ffffff` | Backgrounds de cards / seções |
+| `--text-color` | `#000000` | Texto principal / Títulos |
+| `--muted-text` | `#555555` | Texto de apoio / Subtítulos |
+| `--border-color` | `#7a7a7a` | Bordas e divisores |
+| `--accent-color` | `#000000` | Acentos e ícones |
 
 ### Tipografia
 
@@ -222,32 +218,26 @@ npm run lint     # Análise estática com ESLint
 
 ### Ícones Utilizados (Lucide React)
 
-| Componente | Ícones |
-|-----------|--------|
-| Navbar | `Menu`, `X`, `ChevronDown` |
-| Hero | `ArrowRight`, `TrendingUp` |
-| About | `Briefcase`, `Shield`, `Zap`, `Award` |
-| Shareholders | `Users`, `FileText`, `BarChart3`, `Heart` |
-| Reports | `Download`, `Eye` |
-| Footer | `Facebook`, `Twitter`, `Linkedin`, `Mail` |
+| Componente | Ícones (Lucide) |
+|-----------|-----------------|
+| Footer    | `Terms` (text), `Privacy` (text), `Contact` (text) |
 
 ---
 
 ## ✅ Funcionalidades Implementadas
 
-- [x] Navbar responsivo com menu mobile e blur no scroll
-- [x] Hero section com gráfico interativo e animações
-- [x] About com 4 feature cards e hover effects
-- [x] Investments com gráfico em pizza e barras de progresso
-- [x] Shareholders com 4 resource cards e CTA
-- [x] Reports com filtro por ano e lista de PDFs
-- [x] Footer com 4 colunas, links e redes sociais
+- [x] Navbar responsivo com toggle mobile e blur no scroll
+- [x] Hero section com parallax em imagens P&B e título expansivo
+- [x] About com título sticky e foco em tipografia editorial
+- [x] Strategic Portfolio com 3 cards interativos (Wholly-Owned, Equities, Capital)
+- [x] Shareholders com links interativos e animações de hover lateral
+- [x] Annual Letters com grid de arquivos de 2024 a 2019
+- [x] Footer corporativo com fundo preto total (#000000)
 - [x] Scroll suave integrado com Lenis
 - [x] Animações declarativas com Framer Motion
-- [x] Design responsivo mobile-first (320px → 1920px)
-- [x] Animações CSS: fadeIn, slideInLeft, float, glow, shimmer, bounce, rotate
-- [x] Dark theme premium
-- [x] Paleta dourado / preto / branco / cyan
+- [x] Design responsivo mobile-first
+- [x] Design minimalista corporativo
+- [x] Paleta preto / branco / cinza
 - [x] Tipografia premium (Playfair Display + Inter)
 - [x] Hover states em todos os elementos interativos
 - [x] SEO básico: meta description, Open Graph, `lang="pt-BR"`
